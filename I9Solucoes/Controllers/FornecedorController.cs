@@ -5,17 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using I9Solucoes.Repositorios;
 using I9Solucoes.Models;
+using I9Solucoes.Filtro;
 
 namespace I9Solucoes.Controllers
 {
     public class FornecedorController : Controller
     {
         // GET: Fornecedor
+        [PermissoesFilters]
         public ActionResult Index()
         {
             return View();
         }
 
+[PermissoesFilters]
         [HttpGet]
         public ActionResult Cadastrar()
         {
@@ -29,6 +32,7 @@ namespace I9Solucoes.Controllers
             return Json(fornecedor, JsonRequestBehavior.AllowGet);
                         }
 
+        [PermissoesFilters]
         public ActionResult Listar()
         {
             List<Fornecedor> fornecedor = new FornecedorRepository().Listar();

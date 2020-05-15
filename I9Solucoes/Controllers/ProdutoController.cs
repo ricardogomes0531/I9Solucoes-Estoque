@@ -5,17 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using I9Solucoes.Models;
 using I9Solucoes.Repositorios;
+using I9Solucoes.Filtro;
 
 namespace I9Solucoes.Controllers
 {
     public class ProdutoController : Controller
     {
         // GET: Produto
+        [PermissoesFilters]
         public ActionResult Index()
         {
             return View();
         }
 
+        [PermissoesFilters]
         public ActionResult Cadastra()
         {
             return View();

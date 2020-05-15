@@ -18,6 +18,12 @@ namespace I9Solucoes.Controllers
 		public ActionResult Logar(string email, string senha)
 		{
 			var resultado = new UsuarioRepository().Autenticar(email, senha);
+			if (resultado)
+			{
+				HttpCookie cookie = new HttpCookie("login");
+								cookie.Value = "logado";
+				HttpContext.Response.Cookies.Add(cookie);
+			}
 			return Json(resultado,JsonRequestBehavior.AllowGet);
 		}
 	}
